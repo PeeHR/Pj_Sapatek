@@ -15,6 +15,9 @@ create  table fornecedor (
     website varchar(60),
     numero int,
     primary key (id_fornecedor)
+    
+	
+
 );
 
 create table produto (
@@ -28,9 +31,8 @@ create table produto (
     marca varchar(45) not null,
     estilo varchar(45),
     tipo varchar(45),
-    primary key (id_produto),
-    constraint fk_produto_fornecedor foreign key (id_fornecedor)
-		references fornecedor (id_fornecedor) on delete cascade on update cascade
+    primary key (id_produto)
+
 );
 
 create index fk_produto_fornecedor_idx on fornecedor (id_fornecedor);
@@ -51,3 +53,5 @@ create table funcionario (
     numero_residencial int not null,
     primary key (id_funcionario)
 );
+
+ALTER TABLE produto ADD CONSTRAINT fk_produto_fornecedor FOREIGN KEY (id_fornecedor) REFERENCES fornecedor (id_fornecedor) ON DELETE CASCADE ON UPDATE CASCADE;
